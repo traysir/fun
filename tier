@@ -1,0 +1,46 @@
+# Function to add an entry to the tier list
+def add_entry(tier_list, item, tier):
+    tier_list.append((item, tier))
+
+# Function to display the tier list
+def display_tier_list(tier_list):
+    if not tier_list:
+        print("The tier list is empty.")
+    else:
+        print("Current Tier List:")
+        tier_list.sort(key=lambda x: x[1])
+        for item, tier in tier_list:
+            print(f"{item} - {tier}")
+
+# Main program loop
+def main():
+    print("Welcome to the S-F Tier List Creator!")
+
+    # Initialize the tier list
+    tier_list = []
+
+    while True:
+        print("\nMenu:")
+        print("1. Add an entry to the tier list")
+        print("2. Display the tier list")
+        print("3. Quit")
+        choice = input("Enter your choice (1/2/3): ")
+
+        if choice == "1":
+            item = input("Enter the item: ")
+            tier = input("Enter the tier (S/A/B/C/D/F): ").upper()
+            if tier in ["S", "A", "B", "C", "D", "F"]:
+                add_entry(tier_list, item, tier)
+                print(f"{item} added to the tier list as {tier}.")
+            else:
+                print("Invalid tier. Use S/A/B/C/D/F.")
+        elif choice == "2":
+            display_tier_list(tier_list)
+        elif choice == "3":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+if __name__ == "__main__":
+    main()
