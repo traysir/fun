@@ -1,0 +1,95 @@
+import time
+
+# Define the game functions
+
+def introduction():
+    print("Welcome to the Text-Based Halo Adventure!")
+    time.sleep(1)
+    print("You are a Spartan super-soldier, part of the UNSC.")
+    time.sleep(1)
+    print("You've been sent to investigate a Forerunner installation on a distant planet.")
+    time.sleep(1)
+
+def choose_path():
+    print("\nYou arrive at the entrance of the alien installation.")
+    time.sleep(1)
+    print("Do you want to 'enter' the installation or 'look_around' first?")
+    choice = input("Enter 'enter' or 'look_around': ").lower()
+    if choice == "enter":
+        enter_installation()
+    elif choice == "look_around":
+        look_around()
+    else:
+        print("Invalid choice. Try again.")
+        choose_path()
+
+def look_around():
+    print("\nYou decide to look around before entering.")
+    time.sleep(1)
+    print("You discover strange alien markings on the walls.")
+    time.sleep(1)
+    print("You also find a dormant Sentinel guarding the entrance.")
+    time.sleep(1)
+    print("Do you 'examine_markings' or 'approach_sentinel'?")
+    choice = input("Enter 'examine_markings' or 'approach_sentinel': ").lower()
+    if choice == "examine_markings":
+        print("\nAs you examine the markings, you realize they contain clues to the installation's purpose.")
+        time.sleep(1)
+        print("You gain valuable knowledge, but it's time to proceed.")
+        time.sleep(1)
+        enter_installation()
+    elif choice == "approach_sentinel":
+        print("\nYou cautiously approach the dormant Sentinel.")
+        time.sleep(1)
+        print("It suddenly activates and attacks!")
+        time.sleep(1)
+        print("You must 'fight' or 'retreat'!")
+        choice = input("Enter 'fight' or 'retreat': ").lower()
+        if choice == "fight":
+            print("\nYou engage in a fierce battle with the Sentinel.")
+            time.sleep(1)
+            print("After a tough fight, you emerge victorious.")
+            time.sleep(1)
+            enter_installation()
+        elif choice == "retreat":
+            print("\nYou wisely decide to retreat and find another way in.")
+            time.sleep(1)
+            choose_path()
+        else:
+            print("Invalid choice. Try again.")
+            look_around()
+    else:
+        print("Invalid choice. Try again.")
+        look_around()
+
+def enter_installation():
+    print("\nYou enter the alien installation.")
+    time.sleep(1)
+    print("It's filled with advanced technology and mysterious artifacts.")
+    time.sleep(1)
+    print("You can go 'deeper' into the installation or 'examine_artifacts'.")
+    choice = input("Enter 'deeper' or 'examine_artifacts': ").lower()
+    if choice == "deeper":
+        print("\nYou venture deeper into the installation, uncovering its secrets.")
+        time.sleep(1)
+        print("But danger lurks ahead. Prepare for what lies ahead, Spartan!")
+        # Add more game content here.
+    elif choice == "examine_artifacts":
+        print("\nYou spend time examining the mysterious artifacts.")
+        time.sleep(1)
+        print("You gain valuable knowledge about Forerunner technology.")
+        time.sleep(1)
+        print("Now, it's time to move forward.")
+        time.sleep(1)
+        enter_installation()
+    else:
+        print("Invalid choice. Try again.")
+        enter_installation()
+
+# Main game loop
+def main():
+    introduction()
+    choose_path()
+
+if __name__ == "__main__":
+    main()
