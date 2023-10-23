@@ -1,8 +1,7 @@
-# Function to add an entry to the tier list
+import pyautogui
 def add_entry(tier_list, item, tier):
     tier_list.append((item, tier))
 
-# Function to display the tier list
 def display_tier_list(tier_list):
     if not tier_list:
         print("The tier list is empty.")
@@ -12,7 +11,6 @@ def display_tier_list(tier_list):
         for item, tier in tier_list:
             print(f"{item} - {tier}")
 
-# Main program loop
 def main():
     print("Welcome to the S-F Tier List Creator!")
 
