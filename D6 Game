@@ -1,0 +1,60 @@
+import random
+
+def main():
+    player_score = 0
+    opponent_score = 0
+    round_results = []
+
+    print("Welcome to the Dice Game!")
+    print("You and your opponent will roll dice in 5 rounds.")
+
+    for round_num in range(1, 6):
+        print(f"\n----- Round {round_num} -----")
+        input("Press Enter to roll the dice...")
+
+        player_roll = roll_dice()
+        opponent_roll = roll_dice()
+
+        round_winner = determine_winner(player_roll, opponent_roll)
+        round_results.append((player_roll, opponent_roll, round_winner))
+
+        if round_winner == 'Player':
+            player_score += 1
+        elif round_winner == 'Opponent':
+            opponent_score += 1
+
+        print(f"You rolled: {player_roll}")
+        print(f"Opponent rolled: {opponent_roll}")
+        print(f"Round {round_num} winner: {round_winner}")
+
+    print("\n----- Game Results -----")
+    for idx, result in enumerate(round_results, start=1):
+        print(f"Round {idx}: You rolled {result[0]}, Opponent rolled {result[1]}. Winner: {result[2]}")
+
+    print("\nFinal Scores:")
+    print(f"You: {player_score} points")
+    print(f"Opponent: {opponent_score} points")
+
+    announce_winner(player_score, opponent_score)
+
+def roll_dice():
+    return random.randint(1, 6)
+
+def determine_winner(player_roll, opponent_roll):
+    if player_roll > opponent_roll:
+        return 'Player'
+    elif opponent_roll > player_roll:
+        return 'Opponent'
+    else:
+        return 'Tie'
+
+def announce_winner(player_score, opponent_score):
+    if player_score > opponent_score:
+        print("Congratulations! You win!")
+    elif opponent_score > player_score:
+        print("Oops! You lost. Better luck next time!")
+    else:
+        print("It's a tie!")
+
+if __name__ == "__main__":
+    main()
